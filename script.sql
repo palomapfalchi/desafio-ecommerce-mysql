@@ -55,4 +55,21 @@ INSERT INTO item_pedido VALUES (null, 1, 900, 900, 5, 5);
 INSERT INTO item_pedido VALUES (null, 1, 950, 950, 1, 6);
 INSERT INTO item_pedido VALUES (null, 1, 120, 120, 8, 7);
 
+-- Exercício 2: Quantos clientes tenho cadastrado? 
+select count(id) from cliente;
+-- 5 clientes
+
+-- Exercício 3: Qual o produto mais caro? 
+select * from produto order by preco desc;
+-- Geladeira: 3550,00
+
+-- Exercício 4: Qual o produto mais barato? 
+select * from produto order by preco asc;
+-- Conjunto mesas: 120,00
+
+-- Exercício 5: Mostrar todos produtos com os respectivos departamentos
+select produto.nome, produto.departamento_codigo from produto inner join departamento
+	on departamento.codigo = departamento_codigo;
+
+
 
