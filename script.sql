@@ -17,6 +17,7 @@ INSERT INTO departamento VALUES (null, "Celulares", "Celulares para se comunicar
 INSERT INTO departamento VALUES (null, "Eletrodomésticos", "Conforto para sua casa");
 INSERT INTO departamento VALUES (null, "Informática", "Tudo pra se manter atualizado");
 select * from departamento;
+
 -- endereco
 INSERT INTO endereco VALUES (null, "Rua", "Itabira", "256", "Ap 802", "Centro", "São Roque", "SP", "85536325", 1);
 INSERT INTO endereco VALUES (null, "Av.", "Otavio Costa", "589", "Ed. Arantes", "Centro", "São Paulo", "SP", 98563256, 1);
@@ -60,16 +61,29 @@ select count(id) from cliente;
 -- 5 clientes
 
 -- Exercício 3: Qual o produto mais caro? 
-select * from produto order by preco desc;
+select * from produto where preco = (select max(preco) from produto);
 -- Geladeira: 3550,00
 
 -- Exercício 4: Qual o produto mais barato? 
-select * from produto order by preco asc;
+select * from produto where preco = (select min(preco) from produto);
 -- Conjunto mesas: 120,00
 
 -- Exercício 5: Mostrar todos produtos com os respectivos departamentos
 select produto.nome, produto.departamento_codigo from produto inner join departamento
 	on departamento.codigo = departamento_codigo;
+
+-- Exercício 6: Quantos produtos tem em cada departamento?  
+select departamento_codigo, sum(estoque) from produto
+	GROUP BY departamento_codigo;
+
+-- Exercício 7: Mostrar dados do pedido, incluindo nome dos clientes e nome dos produtos vendidos
+
+
+-- Exercício 8: Mostrar quantos pedidos foram feitos por mês em 2022
+
+-- Exercício 9: Mostre quanto foi faturado por mês 
+
+-- Exercício 10: Mostre o valor total do estoque por departamento
 
 
 
