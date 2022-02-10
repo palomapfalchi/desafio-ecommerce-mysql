@@ -18,8 +18,8 @@ select departamento_codigo as "Codigo depart", sum(estoque) as "Qtde em estoque"
 -- Exercício 7: Mostrar dados do pedido, incluindo nome dos clientes e nome dos produtos vendidos
 SELECT * FROM pedido INNER JOIN item_pedido ON pedido.numero = item_pedido.pedido_numero
 	INNER JOIN produto ON produto.codigo = item_pedido.produto_codigo
-    INNER JOIN cliente ON pedido.cliente_id = cliente.id
-    order by pedido.numero;
+	INNER JOIN cliente ON pedido.cliente_id = cliente.id
+	order by pedido.numero;
     
 -- Exercício 8: Mostrar quantos pedidos foram feitos por mês em 2021
 SELECT Month(data_pedido) as "Mês", count(*) as "Pedidos" FROM pedido WHERE YEAR(data_pedido) = 2021
@@ -32,4 +32,4 @@ SELECT Month(data_pedido) as "Mês", sum(valor_final) as "Valor vendido" FROM pe
 -- Exercício 10: Mostre o valor total do estoque por departamento
 SELECT departamento.nome as "Departamento", sum(produto.estoque * produto.preco) as "Total do estoque" FROM departamento 
 	INNER JOIN produto ON produto.departamento_codigo = departamento.codigo 
-    GROUP BY departamento.codigo;
+	GROUP BY departamento.codigo;
