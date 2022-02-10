@@ -75,15 +75,26 @@ select produto.nome, produto.departamento_codigo from produto inner join departa
 -- Exercício 6: Quantos produtos tem em cada departamento?  
 select departamento_codigo, sum(estoque) from produto
 	GROUP BY departamento_codigo;
+-- Outra Solução para o exercicio 6 -----
+SELECT departamento_codigo, sum(produto.estoque) AS "Qtde produtos por departamento", 
+	departamento.nome  FROM produto INNER JOIN departamento
+    ON departamento.codigo = produto.departamento_codigo
+	GROUP BY departamento.nome;
 
 -- Exercício 7: Mostrar dados do pedido, incluindo nome dos clientes e nome dos produtos vendidos
-
+SELECT * FROM pedido INNER JOIN item_pedido ON pedido.numero = item_pedido.pedido_numero
+	INNER JOIN produto ON produto.codigo = item_pedido.produto_codigo
+    INNER JOIN cliente ON pedido.cliente_id = cliente.id;
 
 -- Exercício 8: Mostrar quantos pedidos foram feitos por mês em 2022
+SELECT count(*) FROM pedido WHERE data_pedido >= "2022-01-01";
 
 -- Exercício 9: Mostre quanto foi faturado por mês 
+SELECT data_pedido, sum(valor_final) AS "Faturamento por mês"  FROM pedido GROUP BY data_pedido;
 
 -- Exercício 10: Mostre o valor total do estoque por departamento
-
+SELECT departamento_codigo, sum(preco*estoque) AS "Total departamento", departamento.nome  FROM produto INNER JOIN departamento
+    ON departamento.codigo = produto.departamento_codigo
+	GROUP BY departamento.nome;
 
 
