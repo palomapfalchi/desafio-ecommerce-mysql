@@ -12,8 +12,7 @@
     
     $ git clone https://github.com/palomapfalchi/desafio-ecommerce-mysql.git
 
-2 - Abra os arquivos clonados em uma IDE que execute arquivos de formato .SQL
-
+2 - Abra os arquivos da pasta Query em uma IDE que execute arquivos de formato .SQL
 
 3 - Crie o Banco de Dados DesafioGama
     
